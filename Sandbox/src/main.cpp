@@ -84,7 +84,7 @@ void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)
 int main()
 {
 	App app;
-	gWindow.Construct(800, 600, "OpenGL Window!");
+	gWindow.Construct(800, 600, "OpenGL Window! Btw Github finally works!");
 	app.SetCloseWindow(&gWindow);
 	app.Run();
 }
