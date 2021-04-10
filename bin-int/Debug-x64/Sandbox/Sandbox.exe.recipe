@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\ville\Desktop\ORGINAL VortexEngine\VortexEngine\bin\Debug-x64\Vortex\Vortex.dll</FullPath>
+      <FullPath>C:\Dev\VortexEngine\bin\Debug-x64\Vortex\Vortex.dll</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\ville\Desktop\ORGINAL VortexEngine\VortexEngine\bin\Debug-x64\Sandbox\Sandbox.exe</FullPath>
+      <FullPath>C:\Dev\VortexEngine\bin\Debug-x64\Sandbox\Sandbox.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
