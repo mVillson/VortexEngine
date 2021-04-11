@@ -14,7 +14,7 @@ namespace vtx {
 		GLFWwindow* mWindow = NULL;
 
 		int mWidth, mHeight;
-		const char* mAppTitle;
+		const char* mTitle;
 		bool mVSync = true;
 		bool mWindowIsClosed = false;
 
@@ -36,6 +36,7 @@ namespace vtx {
 
 		// Setters
 		void SetWindowShouldClose();
+		void SetTitle(const char* title);
 		void SetWidth(int width);
 		void SetHeight(int height);
 	};

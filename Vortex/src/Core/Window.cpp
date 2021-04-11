@@ -3,7 +3,7 @@
 namespace vtx {
 
 	Window::Window()
-		:mAppTitle("No Title!"), mWidth(800), mHeight(600)
+		:mTitle("No Title!"), mWidth(800), mHeight(600)
 	{
 
 	}
@@ -12,9 +12,9 @@ namespace vtx {
 	{
 		mWidth = width;
 		mHeight = height;
-		mAppTitle = title;
+		mTitle = title;
 
-		mWindow = glfwCreateWindow(mWidth, mHeight, mAppTitle, NULL, NULL);
+		mWindow = glfwCreateWindow(mWidth, mHeight, mTitle, NULL, NULL);
 		if (!mWindow)
 		{
 			printf("Error: Could not create a Window!");
@@ -26,9 +26,9 @@ namespace vtx {
 	{
 		mWidth = width;
 		mHeight = height;
-		mAppTitle = title;
+		mTitle = title;
 
-		mWindow = glfwCreateWindow(mWidth, mHeight, mAppTitle, NULL, NULL);
+		mWindow = glfwCreateWindow(mWidth, mHeight, mTitle, NULL, NULL);
 		if (!mWindow)
 		{
 			printf("Error: Could not create a Window!");
@@ -78,6 +78,12 @@ namespace vtx {
 	void Window::SetWindowShouldClose()
 	{
 		glfwSetWindowShouldClose(mWindow, true);
+	}
+
+	void Window::SetTitle(const char* title)
+	{
+		mTitle = title;
+		glfwSetWindowTitle(mWindow, mTitle);
 	}
 
 	void Window::SetWidth(int width)

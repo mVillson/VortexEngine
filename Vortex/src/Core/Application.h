@@ -4,6 +4,7 @@
 #include <glfw3.h>
 
 #include "..\Core\Core.h"
+#include "..\Graphics\GraphicsCore.h"
 
 #include "Window.h"
 
