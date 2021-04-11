@@ -34,10 +34,9 @@ public:
 		vtx::gfx::InitOpenGL();
 
 		renderer.SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-		gWindow.SetTitle("OpenGL Window! Github is setup correctly!");
 		
-		Input.SetWindow(&gWindow);
-		Input.SetKeyCallbackFunction(KeyCallback);
+		InputEvent.SetWindow(&gWindow);
+		InputEvent.SetKeyCallbackFunction(KeyCallback);
 		WindowEvent.SetWindow(&gWindow);
 		WindowEvent.SetFrameBuffersizeCallback(FrameBuffersizeCallback);
 		
@@ -86,7 +85,7 @@ void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)
 int main()
 {
 	App app;
-	gWindow.Construct(800, 600, "OpenGL Window!");
+	gWindow.Construct(800, 600, "OpenGL Window! Hurray! Github Still Works!");
 	app.SetCloseWindow(&gWindow);
 	app.Run();
 }

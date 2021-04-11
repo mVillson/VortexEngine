@@ -5,6 +5,38 @@
 #include <glfw3.h>
 
 namespace vtx {
+	class VORTEX_API Event
+	{
+	protected:
+		Window* mWindow;
+	public:
+		// WindowSetter
+		void SetWindow(Window* window) { mWindow = window; }
+	};
+
+	class VORTEX_API InputEvent : public Event
+	{
+	private:
+	public:
+		// KeyCallbackSetter
+		void SetKeyCallbackFunction(void (*callback)(GLFWwindow* window, int key, int scancode, int action, int mods));
+	};
+
+	class VORTEX_API WindowEvent : public Event
+	{
+	private:
+	public:
+		// KeyCallbackSetter
+		void SetFrameBuffersizeCallback(void (*callback)(GLFWwindow* window, int width, int height));
+	};
+
+	struct VORTEX_API Action
+	{
+		int PRESS = 1;
+		int RELEASE = 0;
+		int REPEAT = 2;
+	};
+
 	struct VORTEX_API KeyCode
 	{
 		int UNKNOWN = -1;
@@ -130,38 +162,9 @@ namespace vtx {
 		int MENU = 348;
 	};
 
-	struct VORTEX_API Action
-	{
-		int PRESS = 1;
-		int RELEASE = 0;
-		int REPEAT = 2;
-	};
-
-	class VORTEX_API InputEvent
-	{
-	private:
-		Window* mWindow;
-	public:
-		// Setters
-		void SetWindow(Window* window) { mWindow = window; }
-		void SetKeyCallbackFunction(void (*callback)(GLFWwindow* window, int key, int scancode, int action, int mods));
-	};
-
-	class VORTEX_API WindowEvent
-	{
-	private:
-		Window* mWindow;
-
-		static int mWidth;
-		static int mHeight;
-	public:
-		// Setters
-		void SetWindow(Window* window) { mWindow = window; }
-		void SetFrameBuffersizeCallback(void (*callback)(GLFWwindow* window, int width, int height));
-	};
 }
 
-vtx::InputEvent Input;
+vtx::InputEvent InputEvent;
 
 vtx::KeyCode KeyCode;
 
