@@ -1,7 +1,7 @@
 #pragma once
 
-// --- c libs ----------------------------------
-#include <string>
+// --- Libraries -------------------------------
+#include "src/Core/Libraries/String.h"
 // ---------------------------------------------
 
 

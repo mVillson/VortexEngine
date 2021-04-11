@@ -42,6 +42,9 @@
     <ClInclude Include="src\Core\Events.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\Core\Libraries\String.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Graphics\Renderer\Renderer.cpp">
@@ -63,6 +66,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\Core\Application.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Core\Libraries\String.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
