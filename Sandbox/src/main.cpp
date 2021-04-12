@@ -1,5 +1,4 @@
 #include <VortexEngine.h>
-
 #include <iostream>
 
 float vertices[] = {
