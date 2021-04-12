@@ -22,6 +22,8 @@ namespace vtx::gfx
 
 		unsigned int CreateShader(GLenum type, const char* ShaderSource);
 	public:
+		ShaderProgram();
+
 		void Create(std::string VSfilepath, std::string FSfilepath);
 
 		void Bind() const;

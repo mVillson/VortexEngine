@@ -26,7 +26,6 @@ public:
 	vtx::gfx::VertexBuffer vb;
 	vtx::gfx::IndexBuffer ib;
 	vtx::gfx::Renderer renderer;
-
 	vtx::gfx::ShaderProgram shaderprogram;
 	void OnStart()
 	{
@@ -60,12 +59,14 @@ public:
 // Callbacks
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
+	// Key Escape
 	if (key == KeyCode.ESCAPE)
 		gWindow.SetWindowShouldClose();
 
-	static bool wireframe = false;
+	// Key W
 	if (key == KeyCode.W && action == Action.PRESS)
 	{
+		static bool wireframe = false;
 		wireframe = !wireframe;
 		if (!wireframe)
 			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -85,7 +86,7 @@ void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)
 int main()
 {
 	App app;
-	gWindow.Construct(800, 600, "OpenGL Window! Hurray! Github Still Works!");
+	gWindow.Construct(800, 600, "OpenGL Window! Hurray! Github Still Works! And Shaders Is Finally Added!");
 	app.SetCloseWindow(&gWindow);
 	app.Run();
 }

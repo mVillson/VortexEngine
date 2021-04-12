@@ -19,6 +19,12 @@ namespace vtx
 
 namespace vtx::gfx
 {
+	ShaderProgram::ShaderProgram()
+		:mProgram(0)
+	{
+
+	}
+
 	void ShaderProgram::Create(std::string VSfilepath, std::string FSfilepath)
 	{
 		mProgram = glCreateProgram();
