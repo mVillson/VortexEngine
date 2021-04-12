@@ -27,6 +27,7 @@ public:
 	vtx::gfx::IndexBuffer ib;
 	vtx::gfx::Renderer renderer;
 	vtx::gfx::ShaderProgram shaderprogram;
+	vtx::gfx::VertexBufferLayout layout;
 	void OnStart()
 	{
 		vtx::gfx::InitOpenGL();
@@ -41,11 +42,19 @@ public:
 		va.Create();
 		vb.Create(vertices, 3 * 5 * sizeof(vertices));
 		ib.Create(indices, 9);
+		
+		va.AddBuffer(vb, layout);
+		layout.Create(0, 3, GL_FLOAT);
+
 		shaderprogram.Create("src/res/vert.shader", "src/res/frag.shader");
 	}
 
 	void Update(float fElapsedTime)
 	{
+		// Set Uniforms
+		shaderprogram.SetUniform("uColor", 1.0f, 0.0f, 0.0f, 1.0f);
+
+		// Render
 		renderer.Draw(va, vb, ib, shaderprogram);
 		gWindow.Update();
 	}
@@ -86,7 +95,7 @@ void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)
 int main()
 {
 	App app;
-	gWindow.Construct(800, 600, "OpenGL Window! Hurray! Github Still Works! And Shaders Is Finally Added!");
+	gWindow.Construct(800, 600, "OpenGL Window!");
 	app.SetCloseWindow(&gWindow);
 	app.Run();
 }

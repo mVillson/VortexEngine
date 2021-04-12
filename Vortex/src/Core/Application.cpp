@@ -16,9 +16,6 @@ namespace vtx {
 	{
 		OnStart();
 
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), nullptr);
-		glEnableVertexAttribArray(0);
-
 		double LastTime = 0.0;
 		double deltaTime = 0.0;
 		double Time = 0.0;

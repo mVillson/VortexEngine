@@ -35,4 +35,5 @@
 #include "src/Graphics/Renderer/Buffer.h"
 #include "src/Graphics/Renderer/VertexArray.h"
 #include "src/Graphics/Renderer/ShaderProgram.h"
+#include "src/Graphics/Renderer/VertexBufferLayout.h"
 // ---------------------------------------------

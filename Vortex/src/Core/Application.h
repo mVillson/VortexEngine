@@ -6,6 +6,8 @@
 #include "..\Core\Core.h"
 #include "..\Graphics\GraphicsCore.h"
 
+#include "..\Graphics\Renderer\VertexBufferLayout.h"
+
 #include "Window.h"
 
 namespace vtx {

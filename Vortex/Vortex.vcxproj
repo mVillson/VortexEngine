@@ -119,6 +119,7 @@
     <ClInclude Include="src\Graphics\Renderer\Renderer.h" />
     <ClInclude Include="src\Graphics\Renderer\ShaderProgram.h" />
     <ClInclude Include="src\Graphics\Renderer\VertexArray.h" />
+    <ClInclude Include="src\Graphics\Renderer\VertexBufferLayout.h" />
     <ClInclude Include="VortexEngine.h" />
   </ItemGroup>
   <ItemGroup>
@@ -130,6 +131,7 @@
     <ClCompile Include="src\Graphics\Renderer\Renderer.cpp" />
     <ClCompile Include="src\Graphics\Renderer\ShaderProgram.cpp" />
     <ClCompile Include="src\Graphics\Renderer\VertexArray.cpp" />
+    <ClCompile Include="src\Graphics\Renderer\VertexBufferLayout.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
