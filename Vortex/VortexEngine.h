@@ -1,7 +1,9 @@
 #pragma once
 
 // --- Libraries -------------------------------
-#include "src/Core/Libraries/String.h"
+#include <string>
+#include <sstream>
+#include <fstream>
 // ---------------------------------------------
 
 
@@ -32,4 +34,5 @@
 #include "src/Graphics/Renderer/Renderer.h"
 #include "src/Graphics/Renderer/Buffer.h"
 #include "src/Graphics/Renderer/VertexArray.h"
+#include "src/Graphics/Renderer/ShaderProgram.h"
 // ---------------------------------------------

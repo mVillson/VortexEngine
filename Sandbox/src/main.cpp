@@ -1,5 +1,4 @@
 #include <VortexEngine.h>
-#include <iostream>
 
 float vertices[] = {
 	-0.5f, -0.5f, 0.0f,	// bottom  left   0
@@ -28,6 +27,7 @@ public:
 	vtx::gfx::IndexBuffer ib;
 	vtx::gfx::Renderer renderer;
 
+	vtx::gfx::ShaderProgram shaderprogram;
 	void OnStart()
 	{
 		vtx::gfx::InitOpenGL();
@@ -42,11 +42,12 @@ public:
 		va.Create();
 		vb.Create(vertices, 3 * 5 * sizeof(vertices));
 		ib.Create(indices, 9);
+		shaderprogram.Create("src/res/vert.shader", "src/res/frag.shader");
 	}
 
 	void Update(float fElapsedTime)
 	{
-		renderer.Draw(va, vb, ib);
+		renderer.Draw(va, vb, ib, shaderprogram);
 		gWindow.Update();
 	}
 	

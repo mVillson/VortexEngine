@@ -112,23 +112,23 @@
   <ItemGroup>
     <ClInclude Include="src\Core\Application.h" />
     <ClInclude Include="src\Core\Events.h" />
-    <ClInclude Include="src\Core\Libraries\String.h" />
     <ClInclude Include="src\Core\Window.h" />
     <ClInclude Include="src\Core\Core.h" />
     <ClInclude Include="src\Graphics\Renderer\Buffer.h" />
     <ClInclude Include="src\Graphics\GraphicsCore.h" />
     <ClInclude Include="src\Graphics\Renderer\Renderer.h" />
+    <ClInclude Include="src\Graphics\Renderer\ShaderProgram.h" />
     <ClInclude Include="src\Graphics\Renderer\VertexArray.h" />
     <ClInclude Include="VortexEngine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Events.cpp" />
-    <ClCompile Include="src\Core\Libraries\String.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
     <ClCompile Include="src\Graphics\GraphicsCore.cpp" />
     <ClCompile Include="src\Graphics\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Graphics\Renderer\Renderer.cpp" />
+    <ClCompile Include="src\Graphics\Renderer\ShaderProgram.cpp" />
     <ClCompile Include="src\Graphics\Renderer\VertexArray.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
