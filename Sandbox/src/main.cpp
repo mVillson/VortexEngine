@@ -75,6 +75,7 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	// Key W
 	if (key == KeyCode.W && action == Action.PRESS)
 	{
+		
 		static bool wireframe = false;
 		wireframe = !wireframe;
 		if (!wireframe)
