@@ -31,6 +31,7 @@ public:
 	void OnStart()
 	{
 		vtx::gfx::InitOpenGL();
+		gWindow.VSync();
 
 		renderer.SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		
@@ -51,8 +52,21 @@ public:
 
 	void Update(float fElapsedTime)
 	{
+		static float r = 0;
+		static float increment = 0.005f;
+		r += increment;
+
+		if (r >= 1.0f)
+		{
+			increment = -0.005f;
+		}
+		else if (r <= 0.0f)
+		{
+			increment = 0.005f;
+		}
+
 		// Set Uniforms
-		shaderprogram.SetUniform("uColor", 1.0f, 0.0f, 0.0f, 1.0f);
+		shaderprogram.SetUniform("uColor", r, 0.0f, 0.0f, 0.5f);
 
 		// Render
 		renderer.Draw(va, vb, ib, shaderprogram);
