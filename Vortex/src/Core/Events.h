@@ -20,6 +20,10 @@ namespace vtx {
 	public:
 		// KeyCallbackSetter
 		void SetKeyCallbackFunction(void (*callback)(GLFWwindow* window, int key, int scancode, int action, int mods));
+
+		// input
+		bool GetKeyDown(int KeyCode);
+		bool GetKeyRelease(int KeyCode);
 	};
 
 	class VORTEX_API WindowEvent : public Event

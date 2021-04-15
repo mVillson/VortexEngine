@@ -52,6 +52,7 @@ public:
 
 	void Update(float fElapsedTime)
 	{
+		// Random
 		static float r = 0;
 		static float increment = 0.005f;
 		r += increment;
