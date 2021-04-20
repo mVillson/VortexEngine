@@ -1,10 +1,10 @@
 #pragma once
 
+#include "..\Core\Core.h"
+
 #include <GL/glew.h>
 
 #include <stdio.h>
-
-#include "..\Core\Core.h"
 
 namespace vtx::gfx {
 

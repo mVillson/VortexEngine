@@ -18,13 +18,6 @@ namespace vtx::gfx {
 		glBindVertexArray(1);
 	}
 
-	void VertexArray::AddBuffer(const VertexBuffer& vb, const VertexBufferLayout& layout)
-	{
-		Bind();
-		vb.Bind();
-		layout.Enable();
-	}
-
 	void VertexArray::Bind() const
 	{
 		glBindVertexArray(1);

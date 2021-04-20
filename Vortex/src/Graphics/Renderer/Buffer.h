@@ -1,8 +1,6 @@
 #pragma once
 
-#include "../../Core/Core.h"
-
-#include <GL/glew.h>
+#include "..\GraphicsCore.h"
 
 namespace vtx::gfx {
 

@@ -1,7 +1,6 @@
 #include "GraphicsCore.h"
 
 namespace vtx::gfx {
-
 	void InitOpenGL()
 	{
 		glewExperimental = GL_TRUE;
@@ -10,5 +9,4 @@ namespace vtx::gfx {
 			printf("Error: Could not initialize Glew - OpenGL");
 		}
 	}
-
 }

@@ -1,8 +1,6 @@
 #pragma once
 
-#include <GL/glew.h>
-
-#include "..\..\Core\Core.h"
+#include "..\GraphicsCore.h"
 
 #include "VertexArray.h"
 #include "Buffer.h"
