@@ -29,6 +29,14 @@
 // ---------------------------------------------
 
 
+// --- Math ------------------------------------
+#include "src/Vendor/glm/glm.hpp"
+using namespace glm;
+#include "src/Vendor/glm/gtc/matrix_transform.hpp"
+#include "src/Vendor/glm/gtc/constants.hpp"
+// ---------------------------------------------
+
+
 // --- Graphics --------------------------------
 #include "src/Graphics/GraphicsCore.h"
 #include "src/Graphics/Renderer/Renderer.h"
@@ -36,4 +44,5 @@
 #include "src/Graphics/Renderer/VertexArray.h"
 #include "src/Graphics/Renderer/ShaderProgram.h"
 #include "src/Graphics/Renderer/VertexBufferLayout.h"
+#include "src/Graphics/Texture.h"
 // ---------------------------------------------

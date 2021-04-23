@@ -18,10 +18,10 @@ public:
 	~DynamicArray()
 	{
 		mArray = nullptr;
-		delete mArray;
+		delete[] mArray;
 
 		mArray = nullptr;
-		delete mArray;
+		delete[] mArray;
 	}
 
 	// push data to the array

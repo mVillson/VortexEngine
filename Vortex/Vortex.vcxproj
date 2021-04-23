@@ -119,6 +119,7 @@
     <ClInclude Include="src\Graphics\Renderer\VertexBufferLayout.h" />
     <ClInclude Include="src\Graphics\Texture.h" />
     <ClInclude Include="src\Vendor\stb_image.h" />
+    <ClInclude Include="src\Vendor\stb_image\stb_image.h" />
     <ClInclude Include="VortexEngine.h" />
   </ItemGroup>
   <ItemGroup>

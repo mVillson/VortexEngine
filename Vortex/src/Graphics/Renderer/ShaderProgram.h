@@ -30,5 +30,6 @@ namespace vtx::gfx
 		// Uniform Setters
 		void SetUniform(const std::string& name, float v0, float v1, float v2, float v3);
 		void SetUniform(const std::string& name, float v0, float v1, float v2);
+		void SetUniform(const std::string& name, int v0);
 	};
 }

@@ -104,8 +104,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="src\res\frag.shader" />
-    <None Include="src\res\vert.shader" />
+    <None Include="res\shaders\frag.shader" />
+    <None Include="res\shaders\vert.shader" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

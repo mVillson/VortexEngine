@@ -94,4 +94,10 @@ namespace vtx::gfx
 		int location = glGetUniformLocation(mProgram, name.c_str());
 		glUniform3f(location, v0, v1, v2);
 	}
+
+	void ShaderProgram::SetUniform(const std::string& name, int v0)
+	{
+		int location = glGetUniformLocation(mProgram, name.c_str());
+		glUniform1i(location, v0);
+	}
 }

@@ -3,10 +3,10 @@
 #include <iostream>
 
 float vertices[] = {
-	-0.5f, -0.5f, //0.0f, 0.0f, // bottom  left   0
-	-0.5f,  0.5f, //0.0f, 0.0f, // top	 left   1
-	 0.5f,  0.5f, //0.0f, 0.0f, // top     right  2
-	 0.5f, -0.5f //0.0f, 0.0f  // bottom  right  3
+	-0.5f, -0.5f, 0.0f, 0.0f,	// bottom  left   0
+	-0.5f,  0.5f, 0.0f, 1.0f,	// top	   left   1
+	 0.5f,  0.5f, 1.0f, 1.0f,	// top     right  2
+	 0.5f, -0.5f, 1.0f, 0.0f	// bottom  right  3
 };
 
 unsigned int indices[] = {
@@ -15,19 +15,20 @@ unsigned int indices[] = {
 };
 
 vtx::Window gWindow;
-
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void FrameBuffersizeCallback(GLFWwindow* window, int width, int height);
 
 class App : public vtx::Application
 {
-public:
+private:
 	vtx::gfx::VertexArray va;
 	vtx::gfx::VertexBuffer vb;
 	vtx::gfx::IndexBuffer ib;
+	vtx::gfx::VertexBufferLayout layout;
 	vtx::gfx::Renderer renderer;
 	vtx::gfx::ShaderProgram shaderprogram;
-	vtx::gfx::VertexBufferLayout layout;
+	vtx::gfx::Texture texture;
+	
 	void OnStart()
 	{
 		vtx::gfx::InitOpenGL();
@@ -41,12 +42,19 @@ public:
 		WindowEvent.SetFrameBuffersizeCallback(FrameBuffersizeCallback);
 		
 		va.Create();
-		vb.Create(vertices, 3 * 5 * sizeof(vertices));
-		ib.Create(indices, 9);
+		vb.Create(vertices, 4 * 4 * sizeof(float));
 		
-		layout.Create<float>(2);
+		layout.Push<float>(2);
+		layout.Push<float>(2);
+		va.AddBuffer(vb, layout);
 
-		shaderprogram.Create("src/res/vert.shader", "src/res/frag.shader");
+		ib.Create(indices, 9);
+
+		shaderprogram.Create("res/shaders/vert.shader", "res/shaders/frag.shader");
+
+		texture.Create("res/textures/villson.jpg");
+		texture.Bind();
+		shaderprogram.SetUniform("uTexture", 0);
 	}
 
 	void Update(float fElapsedTime)

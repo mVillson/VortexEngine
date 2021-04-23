@@ -15,6 +15,7 @@ namespace vtx::gfx {
 		VertexArray();
 		~VertexArray();
 
+		void AddBuffer(VertexBuffer& vb, VertexBufferLayout& layout);
 		void Create();
 
 		void Bind() const;
