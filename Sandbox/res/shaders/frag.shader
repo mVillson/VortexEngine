@@ -9,6 +9,6 @@ uniform sampler2D uTexture;
 
 void main()
 {
-	vec4 texColor = texture(uTexture, vTexCoord);
-	Color = texColor;
+	vec4 TexColor = texture(uTexture, vTexCoord);
+	Color = TexColor;
 }

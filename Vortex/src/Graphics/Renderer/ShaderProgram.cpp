@@ -83,21 +83,39 @@ namespace vtx::gfx
 	}
 
 	// Uniform Setters
-	void ShaderProgram::SetUniform(const std::string& name, float v0, float v1, float v2, float v3)
+	void ShaderProgram::SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3)
 	{
 		int location = glGetUniformLocation(mProgram, name.c_str());
 		glUniform4f(location, v0, v1, v2, v3);
 	}
 
-	void ShaderProgram::SetUniform(const std::string& name, float v0, float v1, float v2)
+	void ShaderProgram::SetUniform3f(const std::string& name, float v0, float v1, float v2)
 	{
 		int location = glGetUniformLocation(mProgram, name.c_str());
 		glUniform3f(location, v0, v1, v2);
 	}
 
-	void ShaderProgram::SetUniform(const std::string& name, int v0)
+	void ShaderProgram::SetUniform1i(const std::string& name, int v)
 	{
 		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniform1i(location, v0);
+		glUniform1i(location, v);
+	}
+
+	void ShaderProgram::SetUniformVector(const std::string& name, vec3 v)
+	{
+		int location = glGetUniformLocation(mProgram, name.c_str());
+		glUniform3f(location, v.x, v.y, v.z);
+	}
+
+	void ShaderProgram::SetUniformVector(const std::string& name, vec4 v)
+	{
+		int location = glGetUniformLocation(mProgram, name.c_str());
+		glUniform4f(location, v.x, v.y, v.z, v.w);
+	}
+
+	void ShaderProgram::SetUniformMatrix(const std::string& name, mat4 m)
+	{
+		int location = glGetUniformLocation(mProgram, name.c_str());
+		glUniformMatrix4fv(location, 1, GL_FALSE, value_ptr(m));
 	}
 }

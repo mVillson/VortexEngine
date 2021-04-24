@@ -54,7 +54,7 @@ private:
 
 		texture.Create("res/textures/villson.jpg");
 		texture.Bind();
-		shaderprogram.SetUniform("uTexture", 0);
+		shaderprogram.SetUniform1i("uTexture", 0);
 	}
 
 	void Update(float fElapsedTime)
@@ -74,7 +74,7 @@ private:
 		}
 
 		// Set Uniforms
-		shaderprogram.SetUniform("uColor", r, 0.0f, 0.0f, 0.5f);
+		shaderprogram.SetUniformVector("uColor", vec4(r, 0.0f, 0.0f, 1.0f));
 
 		// Render
 		renderer.Draw(va, vb, ib, shaderprogram);
