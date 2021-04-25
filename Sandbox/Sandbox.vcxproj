@@ -107,6 +107,9 @@
     <None Include="res\shaders\frag.shader" />
     <None Include="res\shaders\vert.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\villson.jpg" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

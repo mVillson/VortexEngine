@@ -1,8 +1,8 @@
 #version 330 core
 
-out vec4 Color;
-
 in vec2 vTexCoord;
+
+out vec4 Color;
 
 uniform vec4 uColor;
 uniform sampler2D uTexture;

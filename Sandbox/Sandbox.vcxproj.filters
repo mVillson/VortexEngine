@@ -23,4 +23,9 @@
     <None Include="res\shaders\vert.shader" />
     <None Include="res\shaders\frag.shader" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\textures\villson.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
 </Project>

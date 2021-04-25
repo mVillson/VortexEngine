@@ -35,12 +35,10 @@ namespace vtx::gfx
 		void Unbind() const;
 
 		// Uniform Setters
-		void SetUniform4f(const std::string& name, float v0, float v1, float v2, float v3);
-		void SetUniform3f(const std::string& name, float v0, float v1, float v2);
-		void SetUniform1i(const std::string& name, int v);
-
-		void SetUniformVector(const std::string& name, vec3 v);
-		void SetUniformVector(const std::string& name, vec4 v);
-		void SetUniformMatrix(const std::string& name, mat4 m);
+		void SetUniform(const std::string& name, const int v);
+		void SetUniform(const std::string& name, const vec2& v);
+		void SetUniform(const std::string& name, const vec3& v);
+		void SetUniform(const std::string& name, const vec4& v);
+		void SetUniformMatrix(const std::string& name, const mat4& m);
 	};
 }

@@ -3,10 +3,10 @@
 #include <iostream>
 
 float vertices[] = {
-	-0.5f, -0.5f, 0.0f, 0.0f,	// bottom  left   0
-	-0.5f,  0.5f, 0.0f, 1.0f,	// top	   left   1
-	 0.5f,  0.5f, 1.0f, 1.0f,	// top     right  2
-	 0.5f, -0.5f, 1.0f, 0.0f	// bottom  right  3
+	 100.0f, 100.0f, 0.0f, 0.0f, // bottom  left   0
+	 100.0f, 200.0f, 0.0f, 1.0f, // top	    left   1
+	 200.0f, 200.0f, 1.0f, 1.0f,  // top     right  2
+	 200.0f, 100.0f, 1.0f, 0.0f	 // bottom  right  3
 };
 
 unsigned int indices[] = {
@@ -29,53 +29,54 @@ private:
 	vtx::gfx::ShaderProgram shaderprogram;
 	vtx::gfx::Texture texture;
 	
+	mat4 mvp;
+	mat4 model;
+	mat4 view;
+	mat4 projection;
+
 	void OnStart()
 	{
+		//initialize opengl
 		vtx::gfx::InitOpenGL();
-		gWindow.VSync();
 
+		// setting up renderer and window things
+		gWindow.VSync();
 		renderer.SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		
+		// Setting up events
 		InputEvent.SetWindow(&gWindow);
 		InputEvent.SetKeyCallbackFunction(KeyCallback);
 		WindowEvent.SetWindow(&gWindow);
 		WindowEvent.SetFrameBuffersizeCallback(FrameBuffersizeCallback);
 		
+		// creating buffers
 		va.Create();
 		vb.Create(vertices, 4 * 4 * sizeof(float));
-		
 		layout.Push<float>(2);
 		layout.Push<float>(2);
 		va.AddBuffer(vb, layout);
-
 		ib.Create(indices, 9);
 
+		// Setting up Model View Projection
+		projection = ortho(0.0f, (float)gWindow.GetWidth(), 0.0f, (float)gWindow.GetHeight(), -1.0f, 1.0f);
+		view = translate(mat4(1.0f), vec3(-100, -100, 0));
+		model = translate(mat4(1.0f), vec3(200, 200, 0));
+
+		mvp = projection * view * model;
+
+		// Creating shaders
 		shaderprogram.Create("res/shaders/vert.shader", "res/shaders/frag.shader");
 
+		shaderprogram.SetUniformMatrix("uMVP", mvp);
+
+		// Texture
 		texture.Create("res/textures/villson.jpg");
 		texture.Bind();
-		shaderprogram.SetUniform1i("uTexture", 0);
+		shaderprogram.SetUniform("uTexture", 0);
 	}
 
 	void Update(float fElapsedTime)
 	{
-		// Random
-		static float r = 0;
-		static float increment = 0.005f;
-		r += increment;
-
-		if (r >= 1.0f)
-		{
-			increment = -0.005f;
-		}
-		else if (r <= 0.0f)
-		{
-			increment = 0.005f;
-		}
-
-		// Set Uniforms
-		shaderprogram.SetUniformVector("uColor", vec4(r, 0.0f, 0.0f, 1.0f));
-
 		// Render
 		renderer.Draw(va, vb, ib, shaderprogram);
 		gWindow.Update();
@@ -94,10 +95,8 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == KeyCode.ESCAPE)
 		gWindow.SetWindowShouldClose();
 
-	// Key W
-	if (key == KeyCode.W && action == Action.PRESS)
-	{
-		
+	// Key Function 1
+	if (key == KeyCode.F1 && action == Action.PRESS) {
 		static bool wireframe = false;
 		wireframe = !wireframe;
 		if (!wireframe)
@@ -118,7 +117,7 @@ void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)
 int main()
 {
 	App app;
-	gWindow.Construct(800, 600, "OpenGL Window!");
+	gWindow.Construct(960, 540, "OpenGL Window!");
 	app.SetCloseWindow(&gWindow);
 	app.Run();
 }
