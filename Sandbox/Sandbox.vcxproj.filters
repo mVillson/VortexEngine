@@ -27,5 +27,8 @@
     <Image Include="res\textures\villson.jpg">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="res\textures\wooden_crate.jpg">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>

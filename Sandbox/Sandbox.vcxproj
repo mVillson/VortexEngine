@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\villson.jpg" />
+    <Image Include="res\textures\wooden_crate.jpg" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

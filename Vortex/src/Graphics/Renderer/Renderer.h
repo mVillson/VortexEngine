@@ -13,6 +13,7 @@ namespace vtx::gfx {
 	public:
 		Renderer();
 		void Draw(const VertexArray& va, const VertexBuffer& vb, const IndexBuffer& ib, const ShaderProgram& sp);
+		void Draw(const VertexArray& va, const VertexBuffer& vb, const ShaderProgram& sp);
 		void SetClearColor(float red, float green, float blue, float alpha);
 	};
 }

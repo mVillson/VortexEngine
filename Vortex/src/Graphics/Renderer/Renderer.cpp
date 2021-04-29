@@ -3,7 +3,7 @@
 namespace vtx::gfx {
 	Renderer::Renderer()
 	{
-
+		
 	}
 
 	void Renderer::Draw(const VertexArray& va, const VertexBuffer& vb, const IndexBuffer& ib, const ShaderProgram& sp)
@@ -13,12 +13,26 @@ namespace vtx::gfx {
 		ib.Bind();
 		sp.Bind();
 
-		glClear(GL_COLOR_BUFFER_BIT);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glDrawElements(GL_TRIANGLES, ib.GetCount(), GL_UNSIGNED_INT, nullptr);
 
 		va.Unbind();
 		vb.Unbind();
 		ib.Unbind();
+		sp.Unbind();
+	}
+
+	void Renderer::Draw(const VertexArray& va, const VertexBuffer& vb, const ShaderProgram& sp)
+	{
+		va.Bind();
+		vb.Bind();
+		sp.Bind();
+
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+
+		va.Unbind();
+		vb.Unbind();
 		sp.Unbind();
 	}
 
