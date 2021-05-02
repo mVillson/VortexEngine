@@ -111,6 +111,7 @@
     <ClInclude Include="src\Core\Events.h" />
     <ClInclude Include="src\Core\Window.h" />
     <ClInclude Include="src\Core\Core.h" />
+    <ClInclude Include="src\Graphics\Camera.h" />
     <ClInclude Include="src\Graphics\Renderer\Buffer.h" />
     <ClInclude Include="src\Graphics\GraphicsCore.h" />
     <ClInclude Include="src\Graphics\Renderer\Renderer.h" />
@@ -126,6 +127,7 @@
     <ClCompile Include="src\Core\Application.cpp" />
     <ClCompile Include="src\Core\Events.cpp" />
     <ClCompile Include="src\Core\Window.cpp" />
+    <ClCompile Include="src\Graphics\Camera.cpp" />
     <ClCompile Include="src\Graphics\GraphicsCore.cpp" />
     <ClCompile Include="src\Graphics\Renderer\Buffer.cpp" />
     <ClCompile Include="src\Graphics\Renderer\Renderer.cpp" />

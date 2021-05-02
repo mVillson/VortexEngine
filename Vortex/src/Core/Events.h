@@ -12,166 +12,152 @@ namespace vtx {
 	public:
 		// WindowSetter
 		void SetWindow(Window* window) { mWindow = window; }
-	};
 
-	class VORTEX_API InputEvent : public Event
-	{
-	private:
-	public:
-		// KeyCallbackSetter
+		// KeyCallback
 		void SetKeyCallbackFunction(void (*callback)(GLFWwindow* window, int key, int scancode, int action, int mods));
+		void SetMouseMoveCallBackFunction(void (*callback)(GLFWwindow* window, double posX, double posY));
+		void SetFrameBuffersizeCallback(void (*callback)(GLFWwindow* window, int width, int height));
 
-		// input
+		// keyboard input
 		bool GetKeyDown(int KeyCode);
 		bool GetKeyRelease(int KeyCode);
-	};
 
-	class VORTEX_API WindowEvent : public Event
-	{
-	private:
-	public:
-		// KeyCallbackSetter
-		void SetFrameBuffersizeCallback(void (*callback)(GLFWwindow* window, int width, int height));
+		// mouse input
+		bool GetLeftMouseButtonDown();
+		bool GetRightMouseButtonDown();
 	};
-
-	struct VORTEX_API Action
-	{
-		int PRESS = 1;
-		int RELEASE = 0;
-		int REPEAT = 2;
-	};
-
-	struct VORTEX_API KeyCode
-	{
-		int UNKNOWN = -1;
-		int SPACE = 32;
-		int APOSTROPHE = 39; /* ' */
-		int COMMA = 44; /* , */
-		int MINUS = 45; /* - */
-		int PERIOD = 46; /* . */
-		int SLASH = 47; /* / */
-		int ZERO = 48;
-		int ONE = 49;
-		int TWO = 50;
-		int THREE = 51;
-		int FOUR = 52;
-		int FIVE = 53;
-		int SIX = 54;
-		int SEVEN = 55;
-		int EIGHT = 56;
-		int NINE = 57;
-		int SEMICOLON = 59; /* ; */
-		int EQUAL = 61; /* = */
-		int A = 65;
-		int B = 66;
-		int C = 67;
-		int D = 68;
-		int E = 69;
-		int F = 70;
-		int G = 71;
-		int H = 72;
-		int I = 73;
-		int J = 74;
-		int K = 75;
-		int L = 76;
-		int M = 77;
-		int N = 78;
-		int O = 79;
-		int P = 80;
-		int Q = 81;
-		int R = 82;
-		int S = 83;
-		int T = 84;
-		int U = 85;
-		int V = 86;
-		int W = 87;
-		int X = 88;
-		int Y = 89;
-		int Z = 90;
-		int LEFT_BRACKET = 91; /* [ */
-		int BACKSLASH = 92; /* \ */
-		int RIGHT_BRACKET = 93; /* ] */
-		int GRAVE_ACCENT = 96; /* ` */
-		int WORLD_1 = 161; /* non-US #1 */
-		int WORLD_2 = 162; /* non-US #2 */
-		int ESCAPE = 256;
-		int ENTER = 257;
-		int TAB = 258;
-		int BACKSPACE = 259;
-		int INSERT = 260;
-		int DELETE = 261;
-		int RIGHT = 262;
-		int LEFT = 263;
-		int DOWN = 264;
-		int UP = 265;
-		int PAGE_UP = 266;
-		int PAGE_DOWN = 267;
-		int HOME = 268;
-		int END = 269;
-		int CAPS_LOCK = 280;
-		int SCROLL_LOCK = 281;
-		int NUM_LOCK = 282;
-		int PRINT_SCREEN = 283;
-		int PAUSE = 284;
-		int F1 = 290;
-		int F2 = 291;
-		int F3 = 292;
-		int F4 = 293;
-		int F5 = 294;
-		int F6 = 295;
-		int F7 = 296;
-		int F8 = 297;
-		int F9 = 298;
-		int F10 = 299;
-		int F11 = 300;
-		int F12 = 301;
-		int F13 = 302;
-		int F14 = 303;
-		int F15 = 304;
-		int F16 = 305;
-		int F17 = 306;
-		int F18 = 307;
-		int F19 = 308;
-		int F20 = 309;
-		int F21 = 310;
-		int F22 = 311;
-		int F23 = 312;
-		int F24 = 313;
-		int F25 = 314;
-		int KP_0 = 320;
-		int KP_1 = 321;
-		int KP_2 = 322;
-		int KP_3 = 323;
-		int KP_4 = 324;
-		int KP_5 = 325;
-		int KP_6 = 326;
-		int KP_7 = 327;
-		int KP_8 = 328;
-		int KP_9 = 329;
-		int KP_DECIMAL = 330;
-		int KP_DIVIDE = 331;
-		int KP_MULTIPLY = 332;
-		int KP_SUBTRACT = 333;
-		int KP_ADD = 334;
-		int KP_ENTER = 335;
-		int KP_EQUAL = 336;
-		int LEFT_SHIFT = 340;
-		int LEFT_CONTROL = 341;
-		int LEFT_ALT = 342;
-		int LEFT_SUPER = 343;
-		int RIGHT_SHIFT = 344;
-		int RIGHT_CONTROL = 345;
-		int RIGHT_ALT = 346;
-		int RIGHT_SUPER = 347;
-		int MENU = 348;
-	};
-
 }
 
-vtx::InputEvent InputEvent;
+enum VORTEX_API Action
+{
+	PRESS = 1,
+	RELEASE = 0,
+	REPEAT = 2
+};
 
-vtx::KeyCode KeyCode;
+enum VORTEX_API KeyCode
+{
+	UNKNOWN = -1,
+	SPACE = 32,
+	APOSTROPHE = 39, /* ' */
+	COMMA = 44, /* , */
+	MINUS = 45, /* - */
+	PERIOD = 46, /* . */
+	SLASH = 47, /* / */
+	ZERO = 48,
+	ONE = 49,
+	TWO = 50,
+	THREE = 51,
+	FOUR = 52,
+	FIVE = 53,
+	SIX = 54,
+	SEVEN = 55,
+	EIGHT = 56,
+	NINE = 57,
+	SEMICOLON = 59, /* ; */
+	EQUAL = 61, /* = */
+	A = 65,
+	B = 66,
+	C = 67,
+	D = 68,
+	E = 69,
+	F = 70,
+	G = 71,
+	H = 72,
+	I = 73,
+	J = 74,
+	K = 75,
+	L = 76,
+	M = 77,
+	N = 78,
+	O = 79,
+	P = 80,
+	Q = 81,
+	R = 82,
+	S = 83,
+	T = 84,
+	U = 85,
+	V = 86,
+	W = 87,
+	X = 88,
+	Y = 89,
+	Z = 90,
+	LEFT_BRACKET = 91, /* [ */
+	BACKSLASH = 92, /* \ */
+	RIGHT_BRACKET = 93, /* ] */
+	GRAVE_ACCENT = 96, /* ` */
+	WORLD_1 = 161, /* non-US #1 */
+	WORLD_2 = 162, /* non-US #2 */
+	ESCAPE = 256,
+	ENTER = 257,
+	TAB = 258,
+	BACKSPACE = 259,
+	INSERT = 260,
+	DELETE = 261,
+	RIGHT = 262,
+	LEFT = 263,
+	DOWN = 264,
+	UP = 265,
+	PAGE_UP = 266,
+	PAGE_DOWN = 267,
+	HOME = 268,
+	END = 269,
+	CAPS_LOCK = 280,
+	SCROLL_LOCK = 281,
+	NUM_LOCK = 282,
+	PRINT_SCREEN = 283,
+	PAUSE = 284,
+	F1 = 290,
+	F2 = 291,
+	F3 = 292,
+	F4 = 293,
+	F5 = 294,
+	F6 = 295,
+	F7 = 296,
+	F8 = 297,
+	F9 = 298,
+	F10 = 299,
+	F11 = 300,
+	F12 = 301,
+	F13 = 302,
+	F14 = 303,
+	F15 = 304,
+	F16 = 305,
+	F17 = 306,
+	F18 = 307,
+	F19 = 308,
+	F20 = 309,
+	F21 = 310,
+	F22 = 311,
+	F23 = 312,
+	F24 = 313,
+	F25 = 314,
+	KP_0 = 320,
+	KP_1 = 321,
+	KP_2 = 322,
+	KP_3 = 323,
+	KP_4 = 324,
+	KP_5 = 325,
+	KP_6 = 326,
+	KP_7 = 327,
+	KP_8 = 328,
+	KP_9 = 329,
+	KP_DECIMAL = 330,
+	KP_DIVIDE = 331,
+	KP_MULTIPLY = 332,
+	KP_SUBTRACT = 333,
+	KP_ADD = 334,
+	KP_ENTER = 335,
+	KP_EQUAL = 336,
+	LEFT_SHIFT = 340,
+	LEFT_CONTROL = 341,
+	LEFT_ALT = 342,
+	LEFT_SUPER = 343,
+	RIGHT_SHIFT = 344,
+	RIGHT_CONTROL = 345,
+	RIGHT_ALT = 346,
+	RIGHT_SUPER = 347,
+	MENU = 348
+};
 
-vtx::Action Action;
-
-vtx::WindowEvent WindowEvent;
+vtx::Event Event;

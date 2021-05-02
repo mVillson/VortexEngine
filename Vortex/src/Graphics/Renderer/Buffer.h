@@ -4,6 +4,9 @@
 
 namespace vtx::gfx {
 
+	// --------------------------------------------------------------
+	// VertexBuffer
+	// --------------------------------------------------------------
 	class VORTEX_API VertexBuffer
 	{
 	private:
@@ -19,6 +22,9 @@ namespace vtx::gfx {
 		void Unbind() const;
 	};
 
+	// --------------------------------------------------------------
+	// IndexBuffer
+	// --------------------------------------------------------------
 	class VORTEX_API IndexBuffer
 	{
 	private:

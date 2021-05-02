@@ -85,31 +85,43 @@ namespace vtx::gfx
 	// Uniform Setters
 	void ShaderProgram::SetUniform(const std::string& name, int v)
 	{
-		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniform1i(location, v);
+		glUniform1i(GetUniformLocation(name), v);
 	}
 
 	void ShaderProgram::SetUniform(const std::string& name, const vec2& v)
 	{
-		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniform2f(location, v.x, v.y);
+		glUniform2f(GetUniformLocation(name), v.x, v.y);
 	}
 
 	void ShaderProgram::SetUniform(const std::string& name, const vec3& v)
 	{
-		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniform3f(location, v.x, v.y, v.z);
+		glUniform3f(GetUniformLocation(name), v.x, v.y, v.z);
 	}
 
 	void ShaderProgram::SetUniform(const std::string& name, const vec4& v)
 	{
-		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniform4f(location, v.x, v.y, v.z, v.w);
+		glUniform4f(GetUniformLocation(name), v.x, v.y, v.z, v.w);
 	}
 
 	void ShaderProgram::SetUniformMatrix(const std::string& name, const mat4& m)
 	{
-		int location = glGetUniformLocation(mProgram, name.c_str());
-		glUniformMatrix4fv(location, 1, GL_FALSE, value_ptr(m));
+		glUniformMatrix4fv(GetUniformLocation(name), 1, GL_FALSE, value_ptr(m));
 	}
+
+	// GetUniformLocation
+	unsigned int ShaderProgram::GetUniformLocation(const std::string& name)
+	{
+		if (mUniformLocationCache.find(name) != mUniformLocationCache.end())
+			return mUniformLocationCache[name];
+
+		unsigned int location = glGetUniformLocation(mProgram, name.c_str());
+		if (location == -1)
+		{
+			printf("Warning: Uniform '%s' does not exist!\n", name.c_str());
+		}
+
+		mUniformLocationCache[name] = location;
+		return location;
+	}
+
 }

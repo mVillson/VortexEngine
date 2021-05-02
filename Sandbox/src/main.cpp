@@ -54,12 +54,19 @@ float vertices[] = {
 		1.0f, -1.0f, -1.0f, 1.0f, 0.0f,
 };
 
-vec3 cubePos(0.0f, 0.0f, -10.0f);
+vec3 cubePos(0.0f, 0.0f, -5.0f);
 
 vtx::Window gWindow;
 
+vtx::gfx::OrbitCamera orbitcamera;
+float gYaw = 0.0f;
+float gPitch = 0.0f;
+float gRadius = 10.0f;
+const float MOUSE_SENSITIVITY = 0.4f;
+
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 void FrameBuffersizeCallback(GLFWwindow* window, int width, int height);
+void MouseMoveCallback(GLFWwindow* window, double posX, double posY);
 
 class App : public vtx::Application
 {
@@ -81,11 +88,11 @@ private:
 		renderer.SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		
 		// Setting up events
-		InputEvent.SetWindow(&gWindow);
-		InputEvent.SetKeyCallbackFunction(KeyCallback);
-		WindowEvent.SetWindow(&gWindow);
-		WindowEvent.SetFrameBuffersizeCallback(FrameBuffersizeCallback);
-		
+		Event.SetWindow(&gWindow);
+		Event.SetKeyCallbackFunction(KeyCallback);
+		Event.SetMouseMoveCallBackFunction(MouseMoveCallback);
+		Event.SetFrameBuffersizeCallback(FrameBuffersizeCallback);
+
 		// creating buffers
 		va.Create();
 		vb.Create(vertices, sizeof(vertices));
@@ -108,23 +115,20 @@ private:
 	{
 		mat4 model(1.0), view(1.0), projection(1.0);
 
+		orbitcamera.SetLookAt(cubePos);
+		orbitcamera.Rotate(gYaw, gPitch);
+		orbitcamera.SetRadius(gRadius);
 
-		static float cubeAngle = 0.0f;
-		cubeAngle += 1.0f;
-		if (cubeAngle == 360)
-			cubeAngle = 0.0f;
+		model = translate(model, cubePos);
 
-		model = translate(model, cubePos) * rotate(model, radians(cubeAngle), vec3(1.0, 1.0, 1.0));
-
-		vec3 camPos(0.0f, 0.0f, 0.0f);
-		vec3 targetPos(0.0f, 0.0f, -1.0f);
-		vec3 up(0.0f, 1.0f, 0.0f);
-		view = lookAt(camPos, targetPos, up);
+		view = orbitcamera.GetViewMatrix();
 
 		projection = perspective(radians(45.0f), (float)gWindow.GetWidth() / (float)gWindow.GetHeight(), 0.1f, 100.0f);
 
 		mat4 mvp = projection * view * model;
 		shaderprogram.SetUniformMatrix("uMVP", mvp);
+
+		std::cout << "fps: " << 1.0 / fElapsedTime << "  ms: " << fElapsedTime << std::endl;
 
 		// Render
 		renderer.Draw(va, vb, shaderprogram);
@@ -141,11 +145,11 @@ private:
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
 	// Key Escape
-	if (key == KeyCode.ESCAPE)
+	if (key == KeyCode::ESCAPE)
 		gWindow.SetWindowShouldClose();
 
-	// Key Function 1
-	if (key == KeyCode.F1 && action == Action.PRESS) {
+	// Key Function
+	if (key == KeyCode::F1 && action == Action::PRESS) {
 		static bool wireframe = false;
 		wireframe = !wireframe;
 		if (!wireframe)
@@ -153,6 +157,27 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 		else if (wireframe)
 			vtx::gfx::Wireframe(true);
 	}
+}
+
+void MouseMoveCallback(GLFWwindow* window, double posX, double posY)
+{
+	static vec2 lastMousePos = vec2(0, 0);
+
+	if (Event.GetLeftMouseButtonDown())
+	{
+		gYaw -= ((float)posX - lastMousePos.x) * MOUSE_SENSITIVITY;
+		gPitch += ((float)posY - lastMousePos.y) * MOUSE_SENSITIVITY;
+	}
+
+	if (Event.GetRightMouseButtonDown())
+	{
+		float dx = 0.01f * ((float)posX - lastMousePos.x);
+		float dy = 0.01f * ((float)posY - lastMousePos.y);
+		gRadius += dx - dy;
+	}
+
+	lastMousePos.x = (float)posX;
+	lastMousePos.y = (float)posY;
 }
 
 void FrameBuffersizeCallback(GLFWwindow* window, int width, int height)

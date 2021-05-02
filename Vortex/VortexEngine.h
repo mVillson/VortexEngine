@@ -45,4 +45,5 @@ using namespace glm;
 #include "src/Graphics/Renderer/ShaderProgram.h"
 #include "src/Graphics/Renderer/VertexBufferLayout.h"
 #include "src/Graphics/Texture.h"
+#include "src/Graphics/Camera.h"
 // ---------------------------------------------

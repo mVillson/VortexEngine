@@ -5,6 +5,7 @@
 #include <string>
 #include <fstream>
 #include <sstream>
+#include <unordered_map>
 
 // Math library
 #include "..\..\Vendor\glm\glm.hpp"
@@ -20,25 +21,27 @@ namespace vtx
 
 namespace vtx::gfx
 {
-	class VORTEX_API ShaderProgram
+	class ShaderProgram
 	{
 	private:
 		GLuint mProgram;
+		std::unordered_map<std::string, int> mUniformLocationCache;
 
 		unsigned int CreateShader(GLenum type, const char* ShaderSource);
+		unsigned int GetUniformLocation(const std::string& name);
 	public:
-		ShaderProgram(std::string VSfilepath, std::string FSfilepath);
-		ShaderProgram();
-		void Create(std::string VSfilepath, std::string FSfilepath);
+		VORTEX_API ShaderProgram(std::string VSfilepath, std::string FSfilepath);
+		VORTEX_API ShaderProgram();
+		void VORTEX_API Create(std::string VSfilepath, std::string FSfilepath);
 
-		void Bind() const;
-		void Unbind() const;
+		void VORTEX_API Bind() const;
+		void VORTEX_API Unbind() const;
 
 		// Uniform Setters
-		void SetUniform(const std::string& name, const int v);
-		void SetUniform(const std::string& name, const vec2& v);
-		void SetUniform(const std::string& name, const vec3& v);
-		void SetUniform(const std::string& name, const vec4& v);
-		void SetUniformMatrix(const std::string& name, const mat4& m);
+		void VORTEX_API SetUniform(const std::string& name, const int v);
+		void VORTEX_API SetUniform(const std::string& name, const vec2& v);
+		void VORTEX_API SetUniform(const std::string& name, const vec3& v);
+		void VORTEX_API SetUniform(const std::string& name, const vec4& v);
+		void VORTEX_API SetUniformMatrix(const std::string& name, const mat4& m);
 	};
 }
