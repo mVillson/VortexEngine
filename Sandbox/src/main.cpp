@@ -128,10 +128,10 @@ private:
 		mat4 mvp = projection * view * model;
 		shaderprogram.SetUniformMatrix("uMVP", mvp);
 
-		std::cout << "fps: " << 1.0 / fElapsedTime << "  ms: " << fElapsedTime << std::endl;
+		//std::cout << "fps: " << 1.0 / fElapsedTime << "  ms: " << fElapsedTime << std::endl;
 
 		// Render
-		renderer.Draw(va, vb, shaderprogram);
+		renderer.Draw(va, vb, shaderprogram, 36);
 		gWindow.Update();
 	}
 	
