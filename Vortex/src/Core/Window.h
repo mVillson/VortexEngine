@@ -15,7 +15,7 @@ namespace vtx {
 
 		int mWidth, mHeight;
 		const char* mTitle;
-		bool mVSync = true;
+		bool mVSync = false;
 		bool mWindowIsClosed = false;
 
 	public:

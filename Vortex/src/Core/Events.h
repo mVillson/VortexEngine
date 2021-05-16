@@ -15,7 +15,8 @@ namespace vtx {
 
 		// KeyCallback
 		void SetKeyCallbackFunction(void (*callback)(GLFWwindow* window, int key, int scancode, int action, int mods));
-		void SetMouseMoveCallBackFunction(void (*callback)(GLFWwindow* window, double posX, double posY));
+		void SetMouseMoveCallbackFunction(void (*callback)(GLFWwindow* window, double posX, double posY));
+		void SetMouseScrollCallbackFunction(void (*callback)(GLFWwindow* window, double deltaX, double deltaY));
 		void SetFrameBuffersizeCallback(void (*callback)(GLFWwindow* window, int width, int height));
 
 		// keyboard input

@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vortex", "Vortex\Vortex.vcxproj", "{A6457E29-FEA1-439E-945E-ECE25DC7C75A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Sandbox", "Sandbox\Sandbox.vcxproj", "{C3344EB8-C857-4DEB-8F66-11E6EF051FA4}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor", "Editor\Editor.vcxproj", "{9CD0DB8C-F4B4-4B49-9C3A-AD1BE2CDD7D0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{A6457E29-FEA1-439E-945E-ECE25DC7C75A}.Debug|x64.Build.0 = Debug|x64
 		{A6457E29-FEA1-439E-945E-ECE25DC7C75A}.Release|x64.ActiveCfg = Release|x64
 		{A6457E29-FEA1-439E-945E-ECE25DC7C75A}.Release|x64.Build.0 = Release|x64
-		{C3344EB8-C857-4DEB-8F66-11E6EF051FA4}.Debug|x64.ActiveCfg = Debug|x64
-		{C3344EB8-C857-4DEB-8F66-11E6EF051FA4}.Debug|x64.Build.0 = Debug|x64
-		{C3344EB8-C857-4DEB-8F66-11E6EF051FA4}.Release|x64.ActiveCfg = Release|x64
-		{C3344EB8-C857-4DEB-8F66-11E6EF051FA4}.Release|x64.Build.0 = Release|x64
+		{9CD0DB8C-F4B4-4B49-9C3A-AD1BE2CDD7D0}.Debug|x64.ActiveCfg = Debug|x64
+		{9CD0DB8C-F4B4-4B49-9C3A-AD1BE2CDD7D0}.Debug|x64.Build.0 = Debug|x64
+		{9CD0DB8C-F4B4-4B49-9C3A-AD1BE2CDD7D0}.Release|x64.ActiveCfg = Release|x64
+		{9CD0DB8C-F4B4-4B49-9C3A-AD1BE2CDD7D0}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

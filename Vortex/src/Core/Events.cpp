@@ -12,9 +12,14 @@ namespace vtx {
 		glfwSetKeyCallback(mWindow->GetWindow(), callback);
 	}
 
-	void Event::SetMouseMoveCallBackFunction(void (*callback)(GLFWwindow* window, double posX, double posY))
+	void Event::SetMouseMoveCallbackFunction(void (*callback)(GLFWwindow* window, double posX, double posY))
 	{
 		glfwSetCursorPosCallback(mWindow->GetWindow(), callback);
+	}
+
+	void Event::SetMouseScrollCallbackFunction(void (*callback)(GLFWwindow* window, double deltaX, double deltaY))
+	{
+		glfwSetScrollCallback(mWindow->GetWindow(), callback);
 	}
 
 	bool Event::GetKeyDown(int KeyCode)
