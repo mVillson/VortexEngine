@@ -87,7 +87,7 @@ private:
 		vtx::gfx::InitOpenGL();
 
 		// setting up renderer and window things
-		gWindow.VSync(false);
+		gWindow.VSync(true);
 		renderer.SetClearColor(0.1f, 0.1f, 0.1f, 1.0f);
 		
 		// Setting up events
@@ -113,40 +113,34 @@ private:
 		texture.Create("res/textures/wooden_crate.jpg");
 		texture.Bind();
 		shaderprogram.SetUniform("uTexture", 0);
-
-		orbitcamera.SetLookAt(cubePos);
 	}
 
 	void Update(float fElapsedTime)
 	{
-		mat4 model(1.0), view(1.0), projection(1.0);
-
-		orbitcamera.Rotate(gYaw, gPitch);
-		orbitcamera.SetRadius(gRadius);
-
-		model = translate(model, cubePos);
-
-		view = orbitcamera.GetViewMatrix();
-
-		projection = perspective(radians(45.0f), (float)gWindow.GetWidth() / (float)gWindow.GetHeight(), 0.1f, 100.0f);
-
-		mat4 mvp = projection * view * model;
-		shaderprogram.SetUniformMatrix("uMVP", mvp);
-
 		// fps
-		fps = 1.0f / fElapsedTime;
 		static int i = 0;
-		i+=1;
-		if (i >= 2500)
+		i += 1;
+		if (i >= 60)
 		{
+			fps = 1.0f / fElapsedTime;
 			std::stringstream ss;
 			ss << "Vortex Editor - fps: " << fps;
 			gWindow.SetTitle(ss.str().c_str());
 			i = 0;
 		}
 
-		// Render
+		renderer.Clear();
+
+		orbitcamera.SetLookAt(cubePos);
+		orbitcamera.Rotate(gYaw, gPitch);
+		orbitcamera.SetRadius(gRadius);
+
+		renderer.SetModel(translate(renderer.GetModel(), cubePos));
+		renderer.SetView(orbitcamera.GetViewMatrix());
+		renderer.SetProjection(perspective(radians(45.0f), (float)gWindow.GetWidth() / (float)gWindow.GetHeight(), 0.1f, 100.0f));
+		
 		renderer.Draw(va, vb, shaderprogram, 36);
+
 		gWindow.Update();
 	}
 	
