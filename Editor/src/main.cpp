@@ -4,7 +4,7 @@
 
 float vertices[] = {
 	// position			 // tex coords
-	// 
+
 	// front face
 	-1.0f,  1.0f,  1.0f, 0.0f, 1.0f,
 	 1.0f, -1.0f,  1.0f, 1.0f, 0.0f,
@@ -187,7 +187,7 @@ void MouseScrollCallback(GLFWwindow* window, double deltaX, double deltaY)
 	if (Event.GetRightMouseButtonDown())
 	{
 		gRadius += -(float)deltaY;
-		gRadius = clamp(gRadius, 0.0f, 80.0f);
+		gRadius = clamp(gRadius, 2.0f, 80.0f);
 	}
 }
 

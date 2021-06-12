@@ -58,6 +58,46 @@ namespace vtx::gfx {
 		sp.Unbind();
 	}
 
+	void Renderer::DrawQuad(float bottom_left_x, float bottom_left_y, float top_right_x, float top_right_y, ShaderProgram& sp)
+	{
+		float vertices[] =
+		{
+			bottom_left_x, bottom_left_y, 0.0f, 0.0f, 0.0f, // bottom left
+			bottom_left_x, top_right_y, 0.0f, 0.0f, 1.0f,   // top left
+			top_right_x, top_right_y, 0.0f, 1.0f, 1.0f,     // top right
+			top_right_x, bottom_left_y, 0.0f, 1.0f, 0.0f    // bottom right
+		};
+
+		unsigned int indices[] =
+		{
+			0, 1, 2,
+			2, 3, 0
+		};
+
+		VertexArray vao;
+		VertexBuffer vbo;
+		IndexBuffer ibo;
+
+		VertexBufferLayout layout;
+
+		vao.Create();
+
+		vbo.Create(vertices, sizeof(vertices));
+
+		ibo.Create(indices, 6);
+
+		layout.Push<float>(3);
+		layout.Push<float>(2);
+		vao.AddBuffer(vbo, layout);
+
+		sp.Bind();
+		vao.Bind();
+		ibo.Bind();
+		vbo.Bind();
+
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+	}
+
 	void Renderer::Clear()
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
